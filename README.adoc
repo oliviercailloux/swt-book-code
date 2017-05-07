@@ -1,0 +1,39 @@
+= SWT-book-code
+
+This git repo contains the code that was once provided with the http://my.safaribooksonline.com/book/web-development/widgets/0321256638[book] “SWT: The Standard Widget Toolkit, Volume 1” (see below), at url http://www.awprofessional.com/title/0321256638.
+
+As this url is now dead, and as I have not been able to find a replacement for it, I publish here my local copy of the code, under its original license.
+
+I am not affiliated with the company editing the book or the code or SWT.
+
+== Original README.txt
+This distribution contains a collection of Java source files and related data
+files that are provided with the book:
+  "SWT: The Standard Widget Toolkit, Volume 1", 
+  by Steve Northover and Mike Wilson, 
+  published by Addison Wesley Professional,
+  ISBN: 0321256638
+
+The contents of this distribution are made available under the terms of the
+MIT Licence, which can be found in the file license.txt.
+
+The Java files are organized into four packages based on the part of the book
+that they are associated with:
+  "introduction" -- the simple "HelloWorld" example from the "Introduction".
+  "part1" -- examples from the "Widgets" part of the book.
+  "part2" -- examples from the "Graphics" part of the book.
+  "part3" -- the two example programs from the "Applications" part of the book.
+
+The "part1" package is further split into several subpackages based on the chapter
+that the example occurs in. For example, the package "part1.ch2" contains the
+examples found in Chapter 2 of the book.
+
+Note that, there are several files named "Fragments.java", "Fragments1.java",
+"Fragments2.java", etc. These files are *not* executable. They contain the
+code fragments from the book that are not part of any of the running examples.
+They were created to ensure that the code in the book compiles correctly,
+and are included for completeness only.
+
+Please see the book for information on how to run Java applications that use SWT.
+
+This is version 1.0 of this distribution.

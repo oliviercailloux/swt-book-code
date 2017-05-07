@@ -1,0 +1,75 @@
+/*
+ * Copyright (c) 2004 Steve Northover and Mike Wilson
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy of this
+ * software and associated documentation files (the "Software"), to deal in the Software
+ * without restriction, including without limitation the rights to use, copy, modify, merge,
+ * publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons
+ * to whom the Software is furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all copies or
+ * substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
+ * INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR
+ * PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE
+ * FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
+ * OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+ * DEALINGS IN THE SOFTWARE.
+ * 
+ */
+package part1.ch15;
+
+import org.eclipse.swt.*;
+import org.eclipse.swt.widgets.*;
+import org.eclipse.swt.layout.*;
+
+public class FormLayout7 {
+	
+public static void main(String[] args) {
+    Display display = new Display();
+    final Shell shell = new Shell(display);
+    int style = SWT.BORDER | SWT.H_SCROLL | SWT.V_SCROLL;
+    List list = new List(shell, style);
+    list.setItems(new String[] { "One", "Two", "Three" });
+    Sash sash = new Sash(shell, SWT.VERTICAL);
+    Text text = new Text(shell, style);
+    
+    /* Create a FormLayout to configure the Sash */
+    FormLayout layout = new FormLayout();
+    shell.setLayout(layout);
+    FormData listData = new FormData();
+    listData.left = new FormAttachment(0);
+    listData.right = new FormAttachment(sash);
+    listData.top = new FormAttachment(0);
+    listData.bottom = new FormAttachment(100);
+    list.setLayoutData(listData);
+    final FormData sashData = new FormData();
+    sashData.left = new FormAttachment(30);
+    sashData.top = new FormAttachment(0);
+    sashData.bottom = new FormAttachment(100);
+    sash.setLayoutData(sashData);
+    sash.addListener(SWT.Selection, new Listener() {
+        public void handleEvent(Event event) {
+            if (event.detail != SWT.DRAG) {
+                sashData.left =
+                    new FormAttachment(0, event.x);
+                shell.layout();
+            }
+        }
+    });
+    FormData data2 = new FormData();
+    data2.left = new FormAttachment(sash);
+    data2.right = new FormAttachment(100);
+    data2.top = new FormAttachment(0);
+    data2.bottom = new FormAttachment(100);
+    text.setLayoutData(data2);
+    shell.pack();
+    shell.open();
+    while (!shell.isDisposed()) {
+        if (!display.readAndDispatch()) display.sleep();
+    }
+    display.dispose();
+}
+
+}
